@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Tablero
+comment1.params=filas\ columnas\ cantidadMinas
+comment1.target=Tablero(int,\ int,\ int)
+comment10.params=
+comment10.target=int\ getCantidadMinas()
+comment2.params=
+comment2.target=void\ inicializarCasillas()
+comment3.params=
+comment3.target=void\ colocarMinasAleatorias()
+comment4.params=
+comment4.target=void\ calcularMinasAdyacentes()
+comment5.params=fila\ columna
+comment5.target=int\ contarMinasAdyacentes(int,\ int)
+comment6.params=
+comment6.target=Casilla[][]\ getMatriz()
+comment7.params=fila\ columna
+comment7.target=Casilla\ getCasilla(int,\ int)
+comment8.params=
+comment8.target=int\ getFilas()
+comment9.params=
+comment9.target=int\ getColumnas()
+numComments=11

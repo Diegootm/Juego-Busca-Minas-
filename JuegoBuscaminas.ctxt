@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=JuegoBuscaminas
+comment1.params=filas\ columnas\ cantidadMinas
+comment1.target=JuegoBuscaminas(int,\ int,\ int)
+comment2.params=fila\ columna
+comment2.target=void\ descubrirCasilla(int,\ int)
+comment3.params=
+comment3.target=boolean\ estaTerminado()
+comment4.params=
+comment4.target=Tablero\ getTablero()
+numComments=5

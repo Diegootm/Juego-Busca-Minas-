@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Casilla
+comment1.params=
+comment1.target=Casilla()
+comment2.params=
+comment2.target=boolean\ esMina()
+comment3.params=mina
+comment3.target=void\ setMina(boolean)
+comment4.params=
+comment4.target=void\ colocarMina()
+comment5.params=
+comment5.target=boolean\ estaDescubierta()
+comment6.params=
+comment6.target=void\ descubrir()
+comment7.params=
+comment7.target=int\ getMinasAdyacentes()
+comment8.params=minasAdyacentes
+comment8.target=void\ setMinasAdyacentes(int)
+numComments=9

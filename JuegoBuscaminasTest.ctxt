@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=JuegoBuscaminasTest
+comment1.params=
+comment1.target=void\ setUp()
+comment1.text=\r\n\ Se\ ejecuta\ antes\ de\ cada\ test.\r\n
+comment10.params=
+comment10.target=void\ testMinasAleatoriasEnCadaPartida()
+comment2.params=
+comment2.target=void\ tearDown()
+comment2.text=\r\n\ Se\ ejecuta\ despu\u00E9s\ de\ cada\ test.\r\n
+comment3.params=
+comment3.target=void\ testIniciarPartidaCreaTablero()
+comment4.params=
+comment4.target=void\ testTableroInicialNoNulo()
+comment5.params=
+comment5.target=void\ testDescubrirCasillaFueraDeRangoNoRompe()
+comment5.text=@Test\r\n\ \ \ \ public\ void\ testCasillasSinMinasInicialmente()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ boolean\ hayMina\ \=\ false;\r\n\ \ \ \ \ \ \ \ for\ (int\ i\ \=\ 0;\ i\ <\ tablero.getFilas();\ i++)\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ for\ (int\ j\ \=\ 0;\ j\ <\ tablero.getColumnas();\ j++)\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (tablero.getCasilla(i,\ j).esMina())\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hayMina\ \=\ true;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ assertFalse(hayMina,\ "No\ deber\u00EDa\ haber\ minas\ al\ inicio\ del\ juego");\r\n}
+comment6.params=
+comment6.target=void\ testCantidadDeMinasCorrecta()
+comment7.params=
+comment7.target=void\ testCasillasInicialmenteOcultas()
+comment8.params=
+comment8.target=void\ testContarMinasAdyacentes()
+comment9.params=
+comment9.target=void\ testNivelPrincipiante()
+numComments=11
