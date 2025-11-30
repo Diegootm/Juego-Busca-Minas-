@@ -17,11 +17,9 @@ public class Tablero {
     }
 
     private void inicializarCasillas() {
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                matriz[i][j] = new Casilla();
-            }
-        }
+        recorrerTablero((casilla, f, c) -> {
+            matriz[f][c] = new Casilla();
+        });
     }
 
     private void colocarMinasAleatorias() {
@@ -38,12 +36,9 @@ public class Tablero {
     }
 
     private void calcularMinasAdyacentes() {
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                int cuentas = contarMinasAdyacentes(i, j);
-                matriz[i][j].setMinasAdyacentes(cuentas);
-            }
-        }
+        recorrerTablero((casilla, f, c) -> {
+            casilla.setMinasAdyacentes(contarMinasAdyacentes(f, c));
+        });
     }
 
     public int contarMinasAdyacentes(int fila, int columna) {
@@ -56,6 +51,12 @@ public class Tablero {
             }
         }
         return contador;
+    }
+    
+    public void revelarMinas() {
+        recorrerTablero((casilla, f, c) -> {
+            if (casilla.esMina()) casilla.descubrir();
+        });
     }
 
     public Casilla[][] getMatriz() {
@@ -76,5 +77,13 @@ public class Tablero {
 
     public int getCantidadMinas() {
         return cantidadMinas;
+    }
+    
+    private void recorrerTablero(AccionCasillas accion){
+        for(int i=0; i<filas; i++){
+            for(int j=0; j< columnas; j++){
+                accion.ejecutar(matriz[i][j], i, j);
+            }
+        }
     }
 }

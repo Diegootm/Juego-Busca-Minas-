@@ -95,22 +95,7 @@ public class VentanaPrincipal extends JFrame {
 
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                botones[i][j] = new JButton(" ");
-                botones[i][j].setFont(new Font("Arial", Font.BOLD, 14));
-                botones[i][j].setBackground(new Color(100, 100, 100));
-                botones[i][j].setForeground(Color.WHITE);
-                botones[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-                botones[i][j].setFocusPainted(false);
-
-                final int fila = i;
-                final int columna = j;
-
-                botones[i][j].addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        manejarClick(fila, columna);
-                    }
-                });
-
+                botones[i][j] = crearBoton(i,j);
                 contenedor.add(botones[i][j]);
             }
         }
@@ -120,7 +105,22 @@ public class VentanaPrincipal extends JFrame {
         revalidate();
         repaint();
     }
-
+    
+    private JButton crearBoton(int fila, int columna){
+        JButton boton = new JButton(" ");
+        boton.setFont(new Font("Arial", Font.BOLD, 14));
+        boton.setBackground(new Color(100, 100, 100));
+        boton.setForeground(Color.WHITE);
+        boton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        boton.setFocusPainted(false);
+        boton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                        manejarClick(fila, columna);
+            }
+        });
+        return boton;
+    }
+    
     private void manejarClick(int fila, int columna) {
         if (juego == null) return;
 
@@ -131,7 +131,7 @@ public class VentanaPrincipal extends JFrame {
             botones[fila][columna].setText("💣");
             botones[fila][columna].setBackground(Color.RED);
             JOptionPane.showMessageDialog(this, "Has perdido");
-            revelarMinas();
+            juego.getTablero().revelarMinas();
             deshabilitarTablero();
             mostrarPanel("menu");
             return;
@@ -143,37 +143,24 @@ public class VentanaPrincipal extends JFrame {
     private void actualizarTablero() {
         for (int i = 0; i < botones.length; i++) {
             for (int j = 0; j < botones[i].length; j++) {
-
-                Casilla c = juego.getTablero().getCasilla(i, j);
-
-                if (!c.estaDescubierta()) continue;
-
+                if (!obtenerCasilla(i,j).estaDescubierta()) continue;
                 botones[i][j].setEnabled(false);
                 botones[i][j].setBackground(new Color(60, 60, 60));
-
-                if (c.esMina()) {
-                    botones[i][j].setText("💣");
-                } else {
-                    int minas = c.getMinasAdyacentes();
-                    if (minas > 0)
-                        botones[i][j].setText(String.valueOf(minas));
-                    else
-                        botones[i][j].setText(" ");
-                }
+                botones[i][j].setText(obtenerTextoBoton(i,j));
             }
         }
     }
-
-    private void revelarMinas() {
-        for (int i = 0; i < botones.length; i++) {
-            for (int j = 0; j < botones[i].length; j++) {
-                Casilla c = juego.getTablero().getCasilla(i, j);
-                if (c.esMina()) {
-                    botones[i][j].setText("💣");
-                    botones[i][j].setBackground(Color.RED);
-                }
-            }
+    private Casilla obtenerCasilla (int fila, int columna){
+        return juego.getTablero().getCasilla(fila,columna);
+    }
+    private String obtenerTextoBoton (int fila, int columna){
+        if(obtenerCasilla(fila,columna).esMina()){
+            return "💣";
         }
+        if(obtenerCasilla(fila,columna).getMinasAdyacentes()>0){
+            return String.valueOf(obtenerCasilla(fila, columna).getMinasAdyacentes());
+        }
+        return " ";
     }
 
     private void deshabilitarTablero() {

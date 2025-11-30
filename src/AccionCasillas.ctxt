@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=AccionCasillas
+comment1.params=casilla\ fila\ columna
+comment1.target=void\ ejecutar(Casilla,\ int,\ int)
+numComments=2
